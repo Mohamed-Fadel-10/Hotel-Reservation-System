@@ -2,8 +2,8 @@
 class Room {
     constructor(number, type, price) {
         this.number = number;
-        this.type = type; // e.g., "single", "double", "suite"
-        this.price = price; // Price per night
+        this.type = type; 
+        this.price = price; 
         this.isAvailable = true;
     }
 
@@ -24,7 +24,7 @@ class Room {
     }
 }
 
-// Define the Hotel class
+
 class Hotel {
     constructor(name) {
         this.name = name;
@@ -44,7 +44,7 @@ class Hotel {
     }
 }
 
-// Define the Reservation class
+
 class Reservation {
     constructor(hotel) {
         this.hotel = hotel;
@@ -81,7 +81,7 @@ class Reservation {
     }
 }
 
-// Define the RoomManager class to manage all room operations
+
 class RoomManager {
     constructor(hotel) {
         this.hotel = hotel;
@@ -96,32 +96,32 @@ class RoomManager {
     }
 }
 
-// Create hotel instance and add some rooms with pricing
+
 const hotel = new Hotel('Grand Hotel');
 hotel.addRoom(new Room(101, 'single', 100));
 hotel.addRoom(new Room(102, 'double', 150));
 hotel.addRoom(new Room(103, 'suite', 200));
 hotel.addRoom(new Room(104, 'double', 150));
 
-// Create reservation instance
+
 const reservation = new Reservation(hotel);
 
-// Create RoomManager instance
+
 const roomManager = new RoomManager(hotel);
 
-// Function to update the reservation list in the UI
+
 function updateReservationList() {
     const reservationList = document.getElementById('reservation-list');
     reservationList.textContent = reservation.viewReservations();
 }
 
-// Function to update the available rooms in the UI
+
 function updateAvailableRooms() {
     const availableRooms = document.getElementById('available-rooms');
     availableRooms.textContent = roomManager.displayAvailableRooms();
 }
 
-// Handle booking form submission
+
 document.getElementById('booking-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const roomType = document.getElementById('room-type').value.split(' - ')[0];
@@ -131,7 +131,7 @@ document.getElementById('booking-form').addEventListener('submit', (event) => {
     updateReservationList();
 });
 
-// Handle cancellation form submission
+
 document.getElementById('cancellation-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const roomNumber = parseInt(document.getElementById('room-number').value, 10);
@@ -141,6 +141,6 @@ document.getElementById('cancellation-form').addEventListener('submit', (event) 
     updateReservationList();
 });
 
-// Initial update of available rooms and reservation list
+
 updateAvailableRooms();
 updateReservationList();
